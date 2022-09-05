@@ -1,0 +1,94 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}Device index{% endblock %}
+
+{% block body %}
+    <div class="main-container">
+        <div class="pd-ltr-20 xs-pd-20-10">
+            <div class="min-height-200px">
+                <div class="page-header">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12">
+                            <div class="title">
+                                <h4>Devices Tables</h4>
+                            </div>
+                            <nav aria-label="breadcrumb" role="navigation">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Devices Tables</li>
+                                </ol>
+                            </nav>
+                        </div>
+                        <div class="col-md-6 col-sm-12 text-right">
+                            <div class="dropdown">
+                                <a class="btn btn-primary dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+                                    {{ "now"|date("m/d/Y") }}
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- basic table  Start -->
+                <div class="pd-20 card-box mb-30">
+                    <div class="clearfix mb-20">
+                        <div class="pull-left">
+                            <h4 class="text-blue h4">Domaine D'application Table</h4>
+                       </div>
+                        <div class="pull-right">
+                            <a href="{{ path('app_domaine_application_new') }}" class="btn btn-primary btn-sm scroll-click" ><i class="fa fa-code"></i> ADD Domaine d'application</a>
+                        </div>
+                    </div>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nom</th>
+                            <th>Prix</th>
+                            <th>Delete</th>
+                            <th>Update</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        {% for domaine_application in domaine_applications %}
+                            <tr>
+                                <td>{{ domaine_application.id }}</td>
+                                <td>{{ domaine_application.nom }}</td>
+                                <td>{{ domaine_application.prix }}</td>
+                                <td>
+                                    <button type="button" class="btn btn-info"> <a href="{{ path('delete', {'id': domaine_application.id}) }}">Delete</a></button>
+
+
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-info"> <a href="{{ path('app_domaine_application_edit', {'id': domaine_application.id}) }}">Update</a></button>
+
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="4">no records found</td>
+                            </tr>
+                        {% endfor %}
+
+
+                        </tbody>
+                    </table>
+                    <div class="collapse collapse-box" id="basic-table" >
+                        <div class="code-box">
+                            <div class="clearfix">
+                                <a href="javascript:;" class="btn btn-primary btn-sm code-copy pull-left"  data-clipboard-target="#basic-table-code"><i class="fa fa-clipboard"></i> Copy Code</a>
+                                <a href="#basic-table" class="btn btn-primary btn-sm pull-right" rel="content-y"  data-toggle="collapse" role="button"><i class="fa fa-eye-slash"></i> Hide Code</a>
+                            </div>
+                            <pre><code class="xml copy-pre" id="basic-table-code">
+
+							</code></pre>
+                        </div>
+                    </div>
+                </div>
+                <!-- basic table  End -->
+            </div>
+        </div></div>
+
+{% endblock %}

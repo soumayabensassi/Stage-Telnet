@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Abonnement{% endblock %}
+
+{% block body %}
+
+
+
+    <!-- Contact Section Begin -->
+    <section class="contact-section spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="section-title contact-title">
+                        <span>CHALLENGEONE</span>
+                        <h2>PREMIER SATELLITE TUNISIEN
+
+                        </h2>
+
+                    </div>
+
+                </div>
+                <div class="col-lg-8">
+                    <div class="leave-comment">
+
+                        <h2 style="color: #004999;margin-bottom: 30px;margin-left:480px;">Profite</h2>
+                        <p style="color: #FFFFFF;margin-bottom: 30px;margin-left:450px;">REMPLIR LE FORMULAIRE</p>
+
+                        {{ form_start(form,{'attr': {'novalidate': 'novalidate'}},{'attr': {'class': 'signup-form'}}) }}
+
+                        {{ form_errors(form.duree) }}
+                        {{ form_widget(form.duree,{'attr':{'placeholder':'Durée*','style':'border-color: #0080FF;background:transparent;width:80%;height: 46px;font-size: 14px;color: #c4c4c4;margin-bottom: 30px;margin-left:250px;'}}) }}
+                        <br>
+                        {{ form_errors(form.nbrDevice) }}
+                        {{ form_widget(form.nbrDevice,{'attr':{'placeholder':'nombres des devices*','style':'border-color: #0080FF;background:transparent;width:80%;height: 46px;font-size: 14px;color: #c4c4c4;margin-bottom: 30px;margin-left:250px;'}}) }}
+                        {{ form_errors(form.nbracces) }}
+                        {{ form_widget(form.nbracces,{'attr':{'placeholder':'nombres d accès*','style':'border-color: #0080FF;background:transparent;width:80%;height: 46px;font-size: 14px;color: #c4c4c4;margin-bottom: 30px;margin-left:250px;'}}) }}
+
+
+                        {{ form_widget(form.confirmer,{'attr':{'style':'border-color: #0080FF;background:#004999;width:80%;height: 46px;font-size: 14px;color: #c4c4c4;margin-bottom: 30px;margin-left:250px;'}}) }}
+
+
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+{% endblock %}

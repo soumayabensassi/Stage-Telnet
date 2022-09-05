@@ -1,0 +1,86 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}New offre{% endblock %}
+
+{% block body %}
+    {% form_theme form 'bootstrap_4_layout.html.twig' %}
+    <!-- Default Basic Forms Start -->
+    <div class="main-container">
+        <div class="pd-ltr-20 xs-pd-20-10">
+            <div class="min-height-200px">
+                <div class="pd-20 card-box mb-30">
+                    <div class="clearfix">
+                        <div class="pull-left">
+                            <h4 class="text-blue h4">ADD Offres</h4>
+                            <p class="mb-30"></p>
+                        </div>
+
+                    </div>
+                    {{ form_start(form,{'attr': {'novalidate': 'novalidate'}},{'attr': {'class': 'signup-form'}}) }}
+
+                    <div class="form-group row">
+                        <label class="col-sm-12 col-md-2 col-form-label">Nom </label>
+                        <div class="col-sm-12 col-md-10">
+                            {{ form_errors(form.nom) }}
+                            {{ form_widget(form.nom,{'attr':{'placeholder':'nom*','class':'form-control'}}) }}
+
+
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-12 col-md-2 col-form-label">nombre Device</label>
+                        <div class="col-sm-12 col-md-10">
+                            {{ form_errors(form.nbrdevice) }}
+                            {{ form_widget(form.nbrdevice,{'attr':{'placeholder':'nombre Devices*','class':'form-control'}}) }}
+
+
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-12 col-md-2 col-form-label">Durée</label>
+                        <div class="col-sm-12 col-md-10">
+                            {{ form_errors(form.duree) }}
+                            {{ form_widget(form.duree,{'attr':{'placeholder':'duree*','class':'form-control'}}) }}
+
+
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-12 col-md-2 col-form-label">Domaine D'application</label>
+                        <div class="col-sm-12 col-md-10">
+                            {{ form_errors(form.domaineApplication) }}
+                            {{ form_widget(form.domaineApplication,{'attr':{'placeholder':'domaine*','class':'form-control'}}) }}
+
+
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-12 col-md-2 col-form-label">Nombre d'accés</label>
+                        <div class="col-sm-12 col-md-10">
+                            {{ form_errors(form.nbracces) }}
+                            {{ form_widget(form.nbracces,{'attr':{'placeholder':'Nombre d accés*','class':'form-control'}}) }}
+
+
+                        </div>
+                    </div>
+
+                        <div class="col-sm-12 col-md-10">
+                            <br>
+                            <br>
+                            {{ form_widget(form.confirmer,{'attr':{'style':'border-color: #0080FF;background:#0080FF;width:100%;height: 46px;font-size: 14px;color: #c4c4c4;margin-left:190px;'}}) }}
+
+
+                        </div>
+
+
+
+                    {{ form_end(form) }}
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+{% endblock %}

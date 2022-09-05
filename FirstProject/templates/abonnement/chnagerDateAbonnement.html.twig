@@ -1,0 +1,101 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profil{% endblock %}
+
+{% block body %}
+    <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-section set-bg" data-setbg="../img/breadcrumb-bg.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb-text">
+                        <h2>L'Abonnement {{ abonnement.nom }}  </h2>
+                        <h3 style="color: white ">Domaine {{ abonnement.offre.DomaineApplication.nom}}  </h3>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- BMI Calculator Section Begin -->
+    <section class="bmi-calculator-section spad">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-12">
+                    <div class="section-title chart-calculate-title">
+                        <span>vérifié L'abonnement</span>
+                        <h2>bienvenue M/Mme {{ user.nom }}</h2>
+                    </div>
+                    <div class="chart-calculate-form">
+
+                        <form action="#">
+                            <div class="row">
+                               {% if abonnement.nom !='Personnalisé' %}
+                                   <div class="col-sm-8">
+                                       <h6 style="color:#ffffff">Abonnement</h6>
+                                       <br>
+                                       <input  placeholder={{ abonnement.offre.nom }} DISABLED>
+                                   </div>
+                                   <div class="col-sm-8">
+
+                                       <h6 style="color:#ffffff">Domaine D'Application</h6>
+                                       <br>
+                                       <input  placeholder={{ abonnement.offre.DomaineApplication.nom }} DISABLED>
+                                   </div>
+                                   <form class="form-inline" action="" method="GET">
+
+                                   <div class="col-sm-8">
+
+                                       <h6 style="color:#ffffff">Durée</h6>
+                                       <br>
+                                       <input type="text" name="duree" placeholder="{{ abonnement.offre.duree }} Mois" required autofocus >
+                                       <button class="btn btn-lg btn" style="margin-left:190px;width: 300px"type="submit">
+                                           Changer La Durée
+                                       </button>
+                                   </div>
+
+                                   </form>
+                                   <div class="col-sm-8">
+
+                                       <h6 style="color:#ffffff">  Nombre de Device</h6>
+                                       <br>
+                                       <input type="text" placeholder="{{ abonnement.offre.nbrdevice }} Devices" DISABLED>
+                                   </div>
+                                   <div class="col-sm-8">
+
+                                       <h6 style="color:#ffffff">Nombre d'accès</h6>
+                                       <br>
+
+                                       <input type="text" placeholder="{{ abonnement.offre.nbracces }} Personnes" DISABLED>
+                                   </div>
+                                   <div class="col-sm-8">
+
+                                       <h6 style="color:#ffffff">Prix</h6>
+                                       <br>
+                                       <input type="text" placeholder="{{ abonnement.offre.DomaineApplication.prix * abonnement.offre.nbrdevice }} DT/Mois"  DISABLED>
+                                   </div>
+                                {% endif %}
+                            </div>
+                            <br>
+                            <br>
+
+
+                            <div class="col-lg-12">
+
+                            </div>
+
+                        </form>
+                   </div>
+                </div>
+            </div>
+        </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+    <!-- BMI Calculator Section End -->
+{% endblock %}

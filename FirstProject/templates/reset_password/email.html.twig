@@ -1,0 +1,10 @@
+<h1>Bonjour! </h1>
+</div>
+<p>Pour réinitialiser votre mot de passe, veuillez visiter le lien suivant</p>
+
+<a href="http://127.0.0.1:8000{{ path('app_reset_password', {token: resetToken.token}) }}">click here</a>
+
+<p>Ce lien expirera dans {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.</p>
+
+
+</div>

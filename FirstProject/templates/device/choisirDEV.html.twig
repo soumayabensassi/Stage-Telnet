@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Device{% endblock %}
+
+{% block body %}
+
+
+    <!-- BMI Calculator Section Begin -->
+    <section class="bmi-calculator-section spad">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-12">
+                    <div class="section-title chart-title">
+
+                        <a href="{{ path('voirdeviceparabonnement', {'id': abonnement.id}) }}" class="primary-btn btn-normal appoinment-btn ">Voir Les Devices</a>
+                        <br>
+                        <br>
+
+                    </div>
+                    <div class="chart-table">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>Designiation</th>
+                                <th> Serial number</th>
+                                <th> Ajouter Device</th>
+
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            {% for dev in device %}
+                                <tr>
+                                    <td> {{ dev.designiation }}</td>
+
+                                    <td> {{ dev.serialnumber }}</td>
+                                    <td><div class="col-lg-12 col-md-12">
+                                                <a href="{{ path('addDEVICE', {'id': dev.id,'abo':abonnement.id}) }}) }}" class="primary-btn pricing-btn">Ajouter Device</a>
+
+                                        </div>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

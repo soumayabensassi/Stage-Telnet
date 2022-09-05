@@ -1,0 +1,44 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Reset your password{% endblock %}
+
+{% block body %}
+
+    <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-section set-bg" data-setbg="../img/breadcrumb-bg.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb-text">
+                        <h2>Reset password</h2>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<section class="contact-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="signup-text">
+               <div class="container">
+
+                {{ form_start(resetForm) }}
+                <div class="signup-title">
+                    <h2>Réinitialisez votre mot de passe</h2> <h2 style="color: #ffffff">Réinitialisez votre mot de passe</h2>
+                    <p>REMPLIR LE FORMULAIRE</p>
+                </div>
+                {{ form_widget(resetForm.plainPassword,{'attr':{'placeholder':'EMAIL*','style':'border-color: #004999;background:transparent;width:100%;height: 46px;font-size: 25px;color: #004999;margin-left:300px;'}}) }}
+                <br>
+                <br>  <br>
+                   <br>
+                <button class="btn btn-lg btn-primary" type="submit" style="background: #004999;margin-left:500px;">
+                    Réinitialiser le mot de passe
+                </button>
+                {{ form_end(resetForm) }}
+               </div>
+            </div></div></div></section>
+    </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,143 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Service{% endblock %}
+
+{% block body %}
+    <section class="breadcrumb-section set-bg" data-setbg="../img/breadcrumb-bg.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb-text">
+                        <h2>Services</h2>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Services Section Begin -->
+    <section class="services-section spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <span>PREMIER SATELLITE TUNISIEN
+                            CHALLENGEONE</span>
+                        <h2>
+                            SPACE CONNECTING THINGS</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 order-lg-1 col-md-6 p-0">
+                    <div class="ss-pic">
+                        <img src="../img/services/services-1.jpg" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-3 order-lg-2 col-md-6 p-0">
+                    <div class="ss-text">
+                        <h4>Accord de coopération</h4>
+                        <p>02/02/18 : Accord de coopération entre Telnet, Aerospace Valley Toulouse et Technopole Sfax.</p>
+
+                    </div>
+                </div>
+                <div class="col-lg-3 order-lg-3 col-md-6 p-0">
+                    <div class="ss-pic">
+                        <img src="../img/services/services-2.jpg" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-3 order-lg-4 col-md-6 p-0">
+                    <div class="ss-text">
+                        <h4>Contrat de lancement</h4>
+                        <p>01/04/19 : Mohamed Frikha signe le contrat de lancement du 1er satellite tunisien « Challenge ONE »</p>
+
+                    </div>
+                </div>
+                <div class="col-lg-3 order-lg-8 col-md-6 p-0">
+                    <div class="ss-pic">
+                        <img src="../img/services/services-4.jpg" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-3 order-lg-7 col-md-6 p-0">
+                    <div class="ss-text second-row">
+                        <h4>Succursale en Russie</h4>
+                        <p>22/10/19 : Le Groupe TELNET ouvre une succursale en Russie</p>
+
+                    </div>
+                </div>
+                <div class="col-lg-3 order-lg-6 col-md-6 p-0">
+                    <div class="ss-pic">
+                        <img src="../img/services/services-3.jpg" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-3 order-lg-5 col-md-6 p-0">
+                    <div class="ss-text second-row">
+                        <h4>Dernière ligne droite</h4>
+                        <p>12/06/20 : TELNET : Dernière ligne droite avant le lancement du 1er satellite tunisien « Challenge One »</p>
+
+                    </div>
+                </div>
+                <div class="col-lg-3 order-lg-9 col-md-6 p-0">
+                    <div class="ss-pic">
+                        <img src="../img/services/services-5.jpg" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-3 order-lg-10 col-md-6 p-0">
+                    <div class="ss-text second-row">
+                        <h4>Licence UIT
+                        </h4>
+                        <p>02/02/21 : TELNET : L’UIT accorde sa licence pour lancer le premier satellite tunisien Challenge One</p>
+
+                    </div>
+                </div>
+                <div class="col-lg-3 order-lg-11 col-md-6 p-0">
+                    <div class="ss-pic">
+                        <img src="../img/services/services-6.jpg" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-3 order-lg-12 col-md-6 p-0">
+                    <div class="ss-text second-row">
+                        <h4>Remise de ChallengeOne au lanceur
+                        </h4>
+                        <p>16/02/21 : TELNET : Le premier satellite tunisien Challenge One remis à la société russe chargée du lancement</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Services Section End -->
+    <!-- Pricing Section Begin -->
+    <section class="pricing-section service-pricing spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <span>Nos Services</span>
+                        <h2>Profitez de nos offres</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                {% for do in domaine %}
+
+                    <div class="col-lg-4 col-md-8">
+                        <div class="ps-item">
+                            <h1 style="color: #004999">{{ do.nom}} </h1><br>
+                                <a href="{{ path('showoffrepardomaine', {'id': do.id}) }}" class="primary-btn pricing-btn">Voir Les offres</a>
+
+
+                        </div>
+                    </div>
+
+                {% endfor %}
+            </div>
+
+
+        </div>
+    </section>
+{% endblock %}

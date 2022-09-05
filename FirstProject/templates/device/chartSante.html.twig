@@ -1,0 +1,119 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Device{% endblock %}
+
+{% block body %}
+
+
+
+
+
+
+
+    <section class="bmi-calculator-section spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb-text">
+                        <h2 >Voir Le Device :{{ device.serialnumber }}</h2>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-12">
+                    <div class="section-title chart-title">
+
+                        <a href="{{ path('voirdeviceparabonnement', {'id': abonnements.id}) }}" class="primary-btn btn-normal appoinment-btn "> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+                            </svg>  Voir Les Devices</a>
+                        <br>
+                        <br>
+
+                    </div>
+                    <form class="form-inline" action="" method="GET">
+                        <div class="row">
+                            <div class="col-lg-12" style="color: #004999;margin-bottom: 30px;margin-left:350px;">
+                                <div>
+                                    <h5 style="color: #004999">Filtre par date </h5>
+                                    <input style="color: #004999;" type="date" name="datedebut" id="inputdatedebut" >                                        <input style="color: #004999;" type="date" name="datefin" id="inputdatefin"  >
+                                    <button style="color: white;border-color: #004999;margin-left: 85px" class="btn btn-lg btn" type="submit">
+                                        Rechercher
+                                    </button>
+                                </div>
+                                <div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    {% if autorisation.device.domaineApplication.nom=='agricole' %}
+                        <form class="form-inline" action="" method="POST">
+                            <div class="row">
+                                <div class="col-lg-12" style="color: white;margin-bottom: 30px;margin-left:350px;">
+
+
+                                    <h5 style="color: #004999">Filtre par critère </h5>
+                                    <div>
+
+                                        <INPUT style="color: white" type= "radio" name="bilan" value="bilanpositif"> Bilan hydrique positif
+                                        <INPUT style="color: white" type= "radio" name="bilan" value="bilannegatif"> Bilan hydrique Négatif
+                                        <button style="color: white;border-color: #004999;margin-left: 20px" class="btn btn-lg btn" type="submit">
+                                            Rechercher
+                                        </button>
+                                    </div>
+
+
+
+                                    <br><br><br>
+
+
+                                </div>
+                            </div>
+                        </form>
+                    {% endif %}
+                    <div class="chart-table">
+                        <table>
+                            <thead>
+                            <tr>
+
+                                <th> Graphe </th>
+
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            <tr>
+                                <td><div class="col-lg-12 col-md-12">
+                                        {% if autorisation.temperatureSante==1 and autorisation.device.domaineApplication.nom=='santé' %}
+                                            {{ encore_entry_link_tags('app') }}
+                                            {{ render_chart(chart, {'class': 'my-chart'}) }}
+                                            {{ encore_entry_script_tags('app') }}
+                                        {% endif %}
+                                        <br><br><br>
+                                        {% if autorisation.blood==1 and autorisation.device.domaineApplication.nom=='santé' %}
+                                            {{ encore_entry_link_tags('app') }}
+                                            {{ render_chart(chartblood, {'class': 'my-chart'}) }}
+                                            {{ encore_entry_script_tags('app') }}
+                                        {% endif %}
+
+                                        <br><br><br>
+                                        {% if autorisation.heartbeat==1 and autorisation.device.domaineApplication.nom=='santé' %}
+                                            {{ encore_entry_link_tags('app') }}
+                                            {{ render_chart(chartHeartBeat, {'class': 'my-chart'}) }}
+                                            {{ encore_entry_script_tags('app') }}
+                                        {% endif %}
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

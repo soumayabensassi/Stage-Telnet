@@ -1,0 +1,110 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Service{% endblock %}
+
+{% block body %}
+    <section class="breadcrumb-section set-bg" data-setbg="../img/breadcrumb-bg.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb-text">
+                        <h2>Les offres</h2>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section End -->
+    <!-- Pricing Section Begin -->
+    <section class="pricing-section service-pricing spad">
+        <div class="col-lg-10 col-md-8" style="left: 100px">
+            <div class="ps-item">
+                <br>
+
+                {% if user is not null %}
+                <a href="{{path('app_abonnement_new', {'id': dom.id}) }}" class="primary-btn pricing-btn">Personnaliser votre commande</a>
+                {% else %}
+                <a href="{{path('app_login')}}" class="primary-btn pricing-btn">Personnaliser votre commande</a>
+{% endif %}
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <span>Nos Services</span>
+                        <h2>Profitez de nos offres</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+            {% for offre in offres %}
+
+                <div class="col-lg-4 col-md-8">
+                 {% if offre.nom == "Bronze" %}
+                    <div class="ps-item3">
+                        <h1 style="color: #ffffff">{{ offre.nom}} </h1><br>
+                            <h3>{{ offre.prix * offre.nbrdevice}} DT/Mois</h3>
+                            <div class="pi-price">
+                                <h2>{{ offre.nbrdevice}} Devices</h2>
+                                <span>{{ offre.nbrAcces}} Personnes</span>
+
+                            </div>
+                            {% if user is not null %}
+                                <a href="{{ path('passerunecommande', {'id': offre.id}) }}" class="primary-btn pricing-btn">Passer une commande</a>
+                            {% else %}
+                                <a href="{{ path('app_login') }}" class="primary-btn pricing-btn">Passer une commande</a>
+
+                            {% endif %}
+                    </div>
+
+                 {% elseif  offre.nom =="Silver" %}
+                     <div class="ps-item2">
+                        <h1 style="color: #ffffff">{{ offre.nom}} </h1><br>
+                            <h3>{{ offre.prix * offre.nbrdevice}} DT/Mois</h3>
+                            <div class="pi-price">
+                                <h2>{{ offre.nbrdevice}} Devices</h2>
+                                <span>{{ offre.nbrAcces}} Personnes</span>
+
+                            </div>
+                            {% if user is not null %}
+                                <a href="{{ path('passerunecommande', {'id': offre.id}) }}" class="primary-btn pricing-btn">Passer une commande</a>
+                            {% else %}
+                                <a href="{{ path('app_login') }}" class="primary-btn pricing-btn">Passer une commande</a>
+
+                            {% endif %}
+                    </div>
+
+                 {% elseif  offre.nom=="Gold" %}
+                     <div class="ps-item1">
+                            <h1 style="color: #ffffff">{{ offre.nom}} </h1><br>
+                            <h3>{{ offre.prix * offre.nbrdevice}} DT/Mois</h3>
+                            <div class="pi-price">
+                                <h2 >{{ offre.nbrdevice}} Devices</h2>
+                                <span>{{ offre.nbrAcces}} Personnes</span>
+
+                            </div>
+                            {% if user is not null %}
+                                <a href="{{ path('passerunecommande', {'id': offre.id}) }}" class="primary-btn pricing-btn">Passer une commande</a>
+                            {% else %}
+                                <a href="{{ path('app_login') }}" class="primary-btn pricing-btn">Passer une commande</a>
+
+                            {% endif %}
+                    </div>
+                 {% endif %}
+
+
+
+
+                </div>
+
+             {% endfor %}
+            </div>
+
+
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Basic Page Info -->
+    <meta charset="utf-8">
+    <title>{% block title %}backend{% endblock %}</title>
+    {% block css%}
+        <!-- Site favicon -->
+        <link rel="apple-touch-icon" sizes="180x180" href="vendors/images/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="vendors/images/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="vendors/images/favicon-16x16.png">
+
+        <!-- Mobile Specific Metas -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+        <!-- Google Font -->
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+        <!-- CSS -->
+        <link rel="stylesheet" type="text/css" href="{{ asset('vendors/styles/core.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('vendors/styles/icon-font.min.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('src/plugins/datatables/css/dataTables.bootstrap4.min.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('src/plugins/datatables/css/responsive.bootstrap4.min.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('vendors/styles/style.css')}}">
+    {% endblock %}
+    {% block jss%}
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-119386393-1');
+        </script>
+    {% endblock %}
+</head>
+<body>
+{% block header%}
+
+    <div class="header">
+        <div class="header-left">
+            <div class="menu-icon dw dw-menu"></div>
+            <div class="search-toggle-icon dw dw-search2" data-toggle="header_search"></div>
+            <div class="header-search">
+                <form>
+                    <div class="form-group mb-0">
+                        <i class="dw dw-search2 search-icon"></i>
+                        <input type="text" class="form-control search-input" placeholder="Search Here">
+
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="header-right">
+
+            <div class="user-info-dropdown">
+                <div class="dropdown">
+                    <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+						<span class="user-icon">
+							<img src="{{ asset('vendors/images/photo1.jpg')}}" alt="">
+						</span>
+                        <span class="user-name">Admin</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+
+                        <a class="dropdown-item" href="{{ path('app_logout') }}"><i class="dw dw-logout"></i> Log Out</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="left-side-bar">
+        <div class="brand-logo">
+            <a href="{{ path('app_telnet_back') }}">
+                <img src="{{ asset('vendors/images/deskapp-logo-white.png')}}" alt="" class="light-logo">
+            </a>
+            <div class="close-sidebar" data-toggle="left-sidebar-close">
+                <i class="ion-close-round"></i>
+            </div>
+        </div>
+        <div class="menu-block customscroll">
+            <div class="sidebar-menu">
+                <ul id="accordion-menu">
+
+                        <a href="javascript:;" class="dropdown-toggle">
+                            <span class="micon dw dw-house-1"></span><span class="mtext">Home</span>
+                        </a>
+                        <li class="submenu">
+                            <li class="dropdown">
+                            <li><a href="javascript:;" class="dropdown-toggle">
+                                    <span class="submenu"></span><span class="mtext">BACKEND</span>
+                                </a>
+                                <ul class="submenu">
+                            <ul class="BACKAPP">
+                                <li><a href="{{ path('app_abonnement_index') }}">Les commandes</a></li>
+                                <li><a href="{{ path('app_abonnementaccepter_index') }}">Les abonnements</a></li>
+
+                            </ul>
+                                    </li> </ul>
+                        </li>
+                                <li class="submenu">
+                                    <li class="dropdown">
+                                    <li><a href="javascript:;" class="dropdown-toggle">
+                                            <span class="submenu"></span><span class="mtext">BACKAPP</span>
+                                        </a>
+                                        <ul class="submenu">
+                                            <ul class="BACKAPP">
+                                                <li><a href="{{ path('app_client_index') }}">Les clients</a></li>
+                                                <li><a href="{{ path('app_device_index') }}">Les device</a></li>
+                                                <li><a href="{{ path('app_autorisation_index') }}">Les Autorisations</a></li>
+                                                <li><a href="{{ path('genererDATA') }}">Générer des Data</a></li>
+                                                <li><a href="{{ path('app_offre_index') }}">Les Offres</a></li>
+                                                <li><a href="{{ path('app_domaine_application_index') }}">Les Domaines d'application</a></li>
+                                            </ul>
+                                            </li> </ul>
+
+
+
+
+                </li>
+            </div>
+        </div>
+    </div>
+{% endblock%}
+{% block body%}
+    <div class="mobile-menu-overlay"></div>
+
+    <div class="main-container">
+        <div class="pd-ltr-20">
+            <div class="card-box pd-20 height-100-p mb-30">
+                <div class="row align-items-center">
+                    <div class="col-md-4">
+                        <img src="{{ asset('vendors/images/banner-img.png')}}" alt="">
+                    </div>
+                    <div class="col-md-8">
+                        <h4 class="font-20 weight-500 mb-10 text-capitalize">
+                            Bonjour <div class="weight-600 font-30 text-blue">TELNET pour relever vos challenges</div>
+                        </h4>
+                        <p class="font-18 max-width-600">Depuis sa création en 1994, le Groupe TELNET société d’ingénierie produit accompagne ses clients dans la réalisation de leurs solutions et produits ainsi que dans leurs projets de transformation digitale.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-3 mb-30">
+                    <div class="card-box height-100-p widget-style1">
+                        <div class="d-flex flex-wrap align-items-center">
+                            <div class="progress-data">
+                                <div id="chart"></div>
+                            </div>
+                            <div class="widget-data">
+                                <div class="h4 mb-0">{{ client }}</div>
+                                <div class="weight-600 font-14">Client</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 mb-30">
+                    <div class="card-box height-100-p widget-style1">
+                        <div class="d-flex flex-wrap align-items-center">
+                            <div class="progress-data">
+                                <div id="chart2"></div>
+                            </div>
+                            <div class="widget-data">
+                                <div class="h4 mb-0">{{ abonnement }}</div>
+                                <div class="weight-600 font-14">Abonnements</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 mb-30">
+                    <div class="card-box height-100-p widget-style1">
+                        <div class="d-flex flex-wrap align-items-center">
+                            <div class="progress-data">
+                                <div id="chart3"></div>
+                            </div>
+                            <div class="widget-data">
+                                <div class="h4 mb-0">{{ domaine }}</div>
+                                <div class="weight-600 font-14">Domaine D'application</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 mb-30">
+                    <div class="card-box height-100-p widget-style1">
+                        <div class="d-flex flex-wrap align-items-center">
+                            <div class="progress-data">
+                                <div id="chart4"></div>
+                            </div>
+                            <div class="widget-data">
+                                <div class="h4 mb-0">{{ device }}</div>
+                                <div class="weight-600 font-14">Device</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+{% block js%}
+    <!-- js -->
+    <script src="{{ asset('vendors/scripts/core.js')}}"></script>
+    <script src="{{ asset('vendors/scripts/script.min.js')}}"></script>
+    <script src="{{ asset('vendors/scripts/process.js')}}"></script>
+    <script src="{{ asset('vendors/scripts/layout-settings.js')}}"></script>
+    <script src="{{ asset('src/plugins/apexcharts/apexcharts.min.js')}}"></script>
+    <script src="{{ asset('src/plugins/datatables/js/jquery.dataTables.min.js')}}"></script>
+    <script src="{{ asset('src/plugins/datatables/js/dataTables.bootstrap4.min.js')}}"></script>
+    <script src="{{ asset('src/plugins/datatables/js/dataTables.responsive.min.js')}}"></script>
+    <script src="{{ asset('src/plugins/datatables/js/responsive.bootstrap4.min.js')}}"></script>
+    <script src="{{ asset('vendors/scripts/dashboard.js')}}"></script>
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,113 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}Client index{% endblock %}
+
+{% block body %}
+    <div class="main-container">
+        <div class="pd-ltr-20 xs-pd-20-10">
+            <div class="min-height-200px">
+                <div class="page-header">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12">
+                            <div class="title">
+                                <h4>Commandes Tables</h4>
+                            </div>
+                            <nav aria-label="breadcrumb" role="navigation">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Commandes Tables</li>
+                                </ol>
+                            </nav>
+                        </div>
+                        <div class="col-md-6 col-sm-12 text-right">
+                            <div class="dropdown">
+                                <a class="btn btn-primary dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+                                    {{ "now"|date("m/d/Y") }}
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- basic table  Start -->
+                <div class="pd-20 card-box mb-30">
+                    <div class="clearfix mb-20">
+                        <div class="pull-left">
+                            <h4 class="text-blue h4">Commandes Table</h4>
+<h3 style="color: red">{{ error}}</h3>
+                        </div>
+
+                    </div>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Durée</th>
+                            <th>NbrDevice</th>
+                            <th>nom du Client</th>
+                            <th>Email Client</th>
+                            <th>Numéro de téléphone</th>
+                            <th>Domaine D'Application</th>
+                            <th>Accepter</th>
+                            <th>Refuser</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        {% for abonnement in abonnements %}
+                            <tr>
+                                {% if abonnement.isVerified==0 and abonnement.enatentte==0 %}
+                                {% if abonnement.nom =='Personnalisé' %}
+                                    <td>{{ abonnement.duree }}  Mois</td>
+                                    <td>{{ abonnement.nbrDevice }}  Devices</td>
+                                    <td>{{ abonnement.nbracces }} personnes</td>
+                                    {% for e in abonnement.getUser() %}
+                                        <td>{{ e.email }}</td>
+                                        <td>{{ e.numtel }}</td>
+                                    {% endfor %}
+                                    <td> {{ abonnement.domaineApplication.nom }} </td>
+
+
+                                    {% else %}
+                                <td>{{ abonnement.offre.duree }} Mois</td>
+                                <td>{{ abonnement.offre.nbrdevice }} Devices</td>
+                                    <td>{{ abonnement.offre.nbracces }}  personnes</td>
+                                    {% for e in abonnement.getUser() %}
+                                        <td>{{ e.email }}</td>
+                                        <td>{{ e.numtel }}</td>
+                                    {% endfor %}
+                                    <td> {{ abonnement.offre.domaineApplication.nom }} </td>
+                                {% endif %}
+                                <td>
+                                    <button type="button" class="btn btn-info"> <a href="{{ path('app_abonnement_accept', {'id': abonnement.id}) }}">Accepter</a></button>
+
+                                </td>
+                                    <td>
+                                        <button type="button" class="btn btn-info"> <a href="{{ path('app_abonnement_refuse', {'id': abonnement.id}) }}">Refuser</a></button>
+
+                                    </td>
+                                {% endif %}
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="6">no records found</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    <div class="collapse collapse-box" id="basic-table" >
+                        <div class="code-box">
+                            <div class="clearfix">
+                                <a href="javascript:;" class="btn btn-primary btn-sm code-copy pull-left"  data-clipboard-target="#basic-table-code"><i class="fa fa-clipboard"></i> Copy Code</a>
+                                <a href="#basic-table" class="btn btn-primary btn-sm pull-right" rel="content-y"  data-toggle="collapse" role="button"><i class="fa fa-eye-slash"></i> Hide Code</a>
+                            </div>
+                            <pre><code class="xml copy-pre" id="basic-table-code">
+
+							</code></pre>
+                        </div>
+                    </div>
+                </div>
+                <!-- basic table  End -->
+            </div>
+        </div></div>
+
+{% endblock %}

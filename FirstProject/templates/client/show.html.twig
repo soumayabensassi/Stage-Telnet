@@ -1,0 +1,136 @@
+
+
+
+    {% extends 'base.html.twig' %}
+
+    {% block title %}Service{% endblock %}
+
+    {% block body %}
+        <section class="pricing-section service-pricing spad">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <div class="breadcrumb-text">
+                            <h2>Nos Services</h2>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-title">
+                            <span>Voir Les Abonnements du Domaine </span>
+
+
+                            <h2>{{ nomdomaine }}</h2>
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row justify-content-center">
+                    {% for ab in abonnements %}
+                        <!-- affichage abonnement  Personnalisé -->
+                        {% if ab.nom =='Personnalisé' %}
+                        <div class="col-lg-4 col-md-8">
+                            <div class="ps-item">
+                                <h1 style="color: #5a6268">{{ ab.nom}}  </h1><br>
+
+
+                                <div class="pi-price">
+                                    {% if ab.etat ==1 %}
+
+                                        <h3>En cours</h3>
+                                    {% else %}
+                                        <h3>En pause</h3>
+                                    {% endif %}
+
+                                    {% if "now" | date('Y-m-d') >= ab.dateexp | date('Y-m-d')  %}
+                                        <span style="color: #5a6268"><td>   l'abonnement est expiré </td></span>
+                                        <h4 style="color: #5a6268">
+                                            {{ ab.dateexp|date("d/M/Y") }}  </h4>
+
+                                        {% else %}
+                                            <span><td>Date D'éxpiration </td></span>
+                                            <h4 style="color: #004999">
+                                                {{ ab.dateexp|date("d/M/Y") }}</h4>
+                                    {% endif %}
+                                           <span>{{ab.nbrAcces}} Personnes:</span>
+                                </div>
+
+                                {% if "now" | date('Y-m-d') >= ab.dateexp | date('Y-m-d')        %}
+
+                                    <a href="{{ path('renouvler',{'id': ab.id}) }}" class="primary-btn pricing-btn">Renouveler l'abonnement</a>
+
+
+                                {% else %}
+                                    <a href="{{ path('voirdeviceparabonnement',{'id': ab.id}) }}" class="primary-btn pricing-btn">Voir Devices</a>
+                                    <br>
+                                    {% if ab.chef ==user.email %}
+                                    <a href="{{ path('addUser',{'id': ab.id}) }}" class="primary-btn pricing-btn">Ajouter un user</a>
+                                {% endif %}
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% else %}
+                        <!-- affichage abonnement  -->
+                        <div class="col-lg-4 col-md-8">
+                            <div class="ps-item">
+                                <h1 style="color: #5a6268">{{ ab.offre.nom}} </h1><br>
+
+
+                                <div class="pi-price">
+                                    {% if ab.etat ==1 %}
+
+                                        <h3>En cours</h3>
+                                    {% else %}
+                                        <h3>En pause</h3>
+                                    {% endif %}
+
+                                    {% if "now" | date('Y-m-d') >= ab.dateexp | date('Y-m-d')  %}
+                                        <span style="color: #5a6268"><td>   l'abonnement est expiré </td></span>
+                                        <h4 style="color: #5a6268">
+                                            {{ ab.dateexp|date("d/M/Y") }}  </h4>
+
+                                    {% else %}
+                                        <span><td>Date D'éxpiration </td></span>
+                                        <h4 style="color: #004999">
+                                            {{ ab.dateexp|date("d/M/Y") }}</h4>
+                                    {% endif %}
+                                    <span> {{ab.offre.nbrAcces}} Personnes</span>
+                                </div>
+
+                                {% if "now" | date('Y-m-d') >= ab.dateexp | date('Y-m-d')        %}
+
+                                    <a href="{{ path('renouvler',{'id': ab.id}) }}" class="primary-btn pricing-btn">Renouveler l'abonnement</a>
+
+
+                                {% else %}
+                                    <a href="{{ path('voirdeviceparabonnement',{'id': ab.id}) }}" class="primary-btn pricing-btn">Voir Devices</a>
+                                    <br>
+                                    {% if ab.chef ==user.email %}
+                                        <a href="{{ path('addUser',{'id': ab.id}) }}" class="primary-btn pricing-btn">Ajouter un user</a>
+                                    {% endif %}
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% endif %}
+                    {% else %}
+                        <tr>
+                            <h2 colspan="4" style="color: white">Aucun Abonnement</h2>
+                        </tr>
+
+                    {% endfor %}
+                </div>
+
+
+            </div>
+        </section>
+    {% endblock %}

@@ -1,0 +1,313 @@
+
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Gym Template">
+    <meta name="keywords" content="Gym, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}Telnet!{% endblock %}</title>
+    {% block css %}
+        <!-- Google Font -->
+        <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,500,600,700&display=swap" rel="stylesheet">
+
+        <!-- Css Styles -->
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css')}}" type="text/css">
+        <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css')}}" type="text/css">
+        <link rel="stylesheet" href="{{ asset('css/flaticon.css')}}" type="text/css">
+        <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css')}}" type="text/css">
+        <link rel="stylesheet" href="{{ asset('css/barfiller.css')}}" type="text/css">
+        <link rel="stylesheet" href="{{ asset('css/magnific-popup.css')}}" type="text/css">
+        <link rel="stylesheet" href="{{ asset('css/slicknav.min.css')}}" type="text/css">
+        <link rel="stylesheet" href="{{ asset('css/style.css')}}" type="text/css">
+
+    {% endblock %}
+</head>
+
+<body>
+{% block header %}
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+    <!-- Offcanvas Menu Section Begin -->
+    <div class="offcanvas-menu-overlay"></div>
+    <div class="offcanvas-menu-wrapper">
+        <div class="canvas-close">
+            <i class="fa fa-close"></i>
+        </div>
+        <div class="canvas-search search-switch">
+            <i class="fa fa-search"></i>
+        </div>
+        <nav class="canvas-menu mobile-menu">
+            <ul>
+                <ul>
+                    <li ><a href="{{ path('app_telnet')}}">Accueil</a></li>
+                    <li><a href="{{ path('about_telnet')}}">A propos</a></li>
+                    <li><a href="{{ path('app_domaine_show')}}">Services</a></li>
+                    {% if user is not null %}
+
+                        <li><a > <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
+                                    <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2z"/>
+                                </svg></a>
+                            <ul class="dropdown">
+                                <li><a href="{{ path('profil') }}">Profil</a></li>
+
+
+                            </ul>
+
+                        </li>
+
+
+
+                        <li><a > <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell-fill" viewBox="0 0 16 16">
+                                    <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/>
+                                </svg></a>
+                            <ul class="dropdown">
+                                {% if user.isverified==1 %}
+                                    <li><a href="{{ path('profil') }}">Passer au payement</a></li>
+                                {% else %}
+                                    <li><a >aucune notification</a></li>
+                                {% endif %}
+                            </ul>
+
+                        </li>
+
+                        <li><a href="{{ path('app_logout') }}" ><i class="fa fa-sign-out"> </i> </a></li>
+                    {% else%}
+                        <li> <a > <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"/>
+                                    <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
+                                </svg>
+                            </a>
+                            <ul class="dropdown">
+                                <li><a href="{{ path('app_client_new') }}">Sign up</a></li>
+
+                                <li><a href="{{ path('app_login') }}">Sign in</a></li>
+
+
+                            </ul>
+                        </li>
+
+                    {% endif %}
+
+            </ul>
+        </nav>
+        <div id="mobile-menu-wrap"></div>
+
+    </div>
+    <!-- Offcanvas Menu Section End -->
+
+    <!-- Header Section Begin -->
+    <header class="header-section">
+    {% for message in app.flashes('notice') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+        <div class="container-fluid">
+            <div class="row">
+
+
+                <div class="col-lg-3">
+                    <div class="logo">
+                        <a href="{{ path('app_telnet')}}">
+                            <img src="{{ asset('vendors/images/deskapp-logo-white.png')}}" alt="">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <nav class="nav-menu">
+                        <ul>
+                            <li ><a href="{{ path('app_telnet')}}">Accueil</a></li>
+                            <li><a href="{{ path('about_telnet')}}">A propos</a></li>
+                            <li><a href="{{ path('app_domaine_show')}}">Services</a></li>
+                            {% if user is not null %}
+                                <li ><a href="#">Menu</a>
+                            <ul class="dropdown">
+                                {% for d in domaine %}
+                                <li>
+                                    <a href="{{ path('showabonnementparclient',{'cat': d.nom,'id': user.id}) }}">{{ d.nom}}</a></li>
+                                {% endfor %}
+                            </ul>
+                                </li>
+                                <li><a href="{{ path('profil') }}"> Profil </a>
+
+
+                                </li>
+
+
+
+                                <li><a > <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell-fill" viewBox="0 0 16 16">
+                                            <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/>
+                                        </svg></a>
+                                    <ul class="dropdown">
+                                          {% if user.isverified==1 %}
+                                              <li><a href="{{ path('profil') }}">Passer au payement</a></li>
+                                              {% else %}
+                                                  <li><a >aucune notification</a></li>
+                                        {% endif %}
+                                    </ul>
+
+                                </li>
+
+                                <li><a href="{{ path('app_logout') }}" ><i class="fa fa-sign-out"> </i> </a></li>
+                            {% else%}
+                                <li> <a > <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"/>
+                                            <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
+                                        </svg>
+                                    </a>
+                                        <ul class="dropdown">
+                                            <li><a href="{{ path('app_client_new') }}">Sign up</a></li>
+
+                                            <li><a href="{{ path('app_login') }}">Sign in</a></li>
+
+
+                                        </ul>
+                                   </li>
+
+                            {% endif %}
+
+                        </ul>
+                    </nav>
+                </div>
+
+            </div>
+            <div class="canvas-open">
+                <i class="fa fa-bars"></i>
+            </div>
+        </div>
+    </header>
+    <!-- Header End -->
+{% endblock
+%}
+{% block body %}
+    <!-- Hero Section Begin -->
+    <section class="hero-section">
+        <div class="hs-slider owl-carousel">
+            <div class="hs-item set-bg" data-setbg="{{ asset('img/hero/hero-1.jpg')}}">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 offset-lg-6">
+                            <div class="hi-text">
+
+                                <h1><strong>CHALLENGE ONE</strong>  </h1>
+<h2 style="color: white">Conçu pour Connecter  ,Conçu pour Durer</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hs-item set-bg" data-setbg="{{ asset('/img/breadcrumb-bg.jpg')}}">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 offset-lg-6">
+                            <div class="hi-text">
+                                <span></span>
+                                <h1><strong>CHALLENGE ONE</strong>  </h1>
+                                <h2 style="color: white">Conçu pour Connecter  ,Conçu pour Durer</h2>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Hero Section End -->
+{% endblock
+%}
+{% block footer %}
+    <!-- Get In Touch Section Begin -->
+    <div class="gettouch-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="gt-text">
+                        <i class="fa fa-map-marker"></i>
+                        <p>TELNET TECHNOCENTRE, Rue du Lac Léman 1053 <br/> Les berges du Lac Tunis- TUNISIE</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="gt-text">
+                        <i class="fa fa-mobile"></i>
+                        <ul>
+                            <li>+216 71 860 233</li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="gt-text email">
+                        <i class="fa fa-envelope"></i>
+                        <p>contact@challengeone.space</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Get In Touch Section End -->
+
+    <!-- Footer Section Begin -->
+    <section class="footer-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="fs-about">
+                        <div class="fa-logo">
+                            <a href="#{{ path('app_telnet')}}"><img src="{{ asset('vendors/images/deskapp-logo-white.png')}}" alt=""></a>
+                        </div>
+                        <p>Depuis 1993, TELNET HOLDING accompagne ses clients grands comptes dans leurs stratégies de transformation digitale, de R&D et d’innovation.
+
+                            TELNET se positionne comme le vecteur de solutions audacieuses et le catalyseur des changements technologiques dans de nombreux secteurs d’activités</p>
+                        <div class="fa-social">
+                            <a href="https://www.facebook.com/telnet.holding.tn"><i class="fa fa-facebook"></i></a>
+                            <a href="https://twitter.com/telnetholding"><i class="fa fa-twitter"></i></a>
+                            <a href="https://tn.linkedin.com/in/telnet-tunisie-bb5883140?original_referer=https%3A%2F%2Fgroupe-telnet.com%2F"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16">
+                                    <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
+                                </svg></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-3 col-sm-12">
+                    <div class="fs-widget">
+                        <h4>Liens utiles</h4>
+                        <ul>
+                            <li><a href="{{ path('about_telnet')}}">A propos</a></li>
+                            <li><a href="{{ path('app_domaine_show')}}">Services</a></li>
+                                                    </ul>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+    </section>
+    <!-- Footer Section End -->
+{% endblock
+%}
+{% block js
+%}
+
+    <!-- Js Plugins -->
+    <script src="{{ asset('js/jquery-3.3.1.min.js')}}"></script>
+    <script src="{{ asset('js/bootstrap.min.js')}}"></script>
+    <script src="{{ asset('js/jquery.magnific-popup.min.js')}}"></script>
+    <script src="{{ asset('js/masonry.pkgd.min.js')}}"></script>
+    <script src="{{ asset('js/jquery.barfiller.js')}}"></script>
+    <script src="{{ asset('js/jquery.slicknav.js')}}"></script>
+    <script src="{{ asset('js/owl.carousel.min.js')}}"></script>
+    <script src="{{ asset('js/main.js')}}"></script>
+{% endblock
+%}
+
+
+</body>
+
+</html>

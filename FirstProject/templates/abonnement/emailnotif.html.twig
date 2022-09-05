@@ -1,0 +1,18 @@
+<h1>Bonjour! </h1>
+</div>
+<h2>veuillez Voir: </h2>
+{% if abonnements.nom !='Personnalisé'  %}
+<h3 style="color: #004999"> l'abonnement :{{ abonnements.offre.nom }}</h3>
+<h3 style="color: #004999">Domaine :{{ abonnements.offre.domaineApplication.nom }}</h3>
+
+<p>votre college {{ user.nom}} {{ user.prenom}} ayant cette adresse {{ user.email}} veut vous ajouter dans un abonnement  </p>
+<a href="http://127.0.0.1:8000{{ path('app_login') }}">click here</a>
+{% else %}
+    <h3 style="color: #004999"> l'abonnement :{{ abonnements.nom }}</h3>
+    <h3 style="color: #004999">Domaine :{{ abonnements.domaineApplication.nom }}</h3>
+
+    <p>votre college {{ user.nom}} {{ user.prenom}} ayant cette adresse {{ user.email}} veut vous ajouter dans un abonnement  </p>
+    <a href="http://127.0.0.1:8000{{ path('app_login') }}">click here</a>
+
+{% endif %}
+</div>
